@@ -1,17 +1,25 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 export default GoalItem = (props) => {
-    return <View style={styles.GoalView}>
-        <Text>{props.goal}</Text>
-    </View>
+    const onDelete = () => {
+        props.onDelete(props.id);
+    }
+
+    return (
+        <TouchableOpacity onPress={onDelete}>
+            <View style={styles.GoalView}>
+                <Text>{props.goal}</Text>
+            </View>
+        </TouchableOpacity>
+       );
 }
 
 const styles = StyleSheet.create({
     GoalView: {
         height: 50,
         marginVertical: 5,
-        backgroundColor: 'grey',
+        backgroundColor: 'gainsboro',
         alignItems: 'center',
         justifyContent: 'center'
     }
